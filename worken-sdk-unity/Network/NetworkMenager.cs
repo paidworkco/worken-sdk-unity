@@ -1,5 +1,6 @@
 ﻿using Nethereum.Web3;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,25 @@ namespace worken_sdk_unity.Network
         internal static Web3 GetAccountWeb3(Nethereum.Web3.Accounts.Account account) => new Web3(account);
         internal static Web3 GetAccountWeb3Full(Nethereum.Web3.Accounts.Account account) => new Web3(account, WorkenSDKUnity.Url);
 
-        public async Task GetNetworkStatus()
+        public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GetLatestBlock()
         {
-            throw new NotImplementedException("GetNetworkStatus method is not implemented.");
+           var BlockNumber = await WorkenSDKUnity.Web3Client.Eth.Blocks.GetBlockNumber.SendRequestAsync();
+
+            return BlockNumber;
+        }
+
+        public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GetHashRate()
+        {
+            var HashRate = await WorkenSDKUnity.Web3Client.Eth.Mining.Hashrate.SendRequestAsync();
+
+            return HashRate;
+        }
+
+        public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GasPrice()
+        {
+            var GasPrice = await WorkenSDKUnity.Web3Client.Eth.GasPrice.SendRequestAsync();
+
+            return GasPrice;
         }
 
         public async Task GetMonitorNetworkCongestion()
