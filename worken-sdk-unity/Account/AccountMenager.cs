@@ -2,11 +2,10 @@
 
 using Web3 = Nethereum.Web3.Web3;
 
-namespace worken_sdk_unity.Account
+namespace worken_sdk_unity.AccountMenager
 {
-    public sealed class AccountMenager
+    public sealed class AccountManager
     {
-
         public async Task<BigInteger> GetBalanceInEtherWei(string address)
         {
             var result = await WorkenSDKUnity.Web3Client.Eth.GetBalance.SendRequestAsync(address);
@@ -50,7 +49,12 @@ namespace worken_sdk_unity.Account
 
             BigInteger balance = await function.CallAsync<BigInteger>(address);
 
-            return balance.ToString("x");
+            return new Nethereum.Hex.HexTypes.HexBigInteger(balance).HexValue;
+        }
+
+        public Nethereum.Web3.Accounts.Account CreateAccount(string privateKey)
+        {
+            return new Nethereum.Web3.Accounts.Account(privateKey);
         }
     }
 }
