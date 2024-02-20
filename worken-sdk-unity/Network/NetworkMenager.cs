@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Nethereum.Web3;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,11 @@ using worken_sdk_unity.Network.models;
 
 namespace worken_sdk_unity.Network
 {
-    public sealed class NetworkMenager
+    public sealed class NetworkManager
     {
+        internal static Web3 GetAccountWeb3(Nethereum.Web3.Accounts.Account account) => new Web3(account);
+        internal static Web3 GetAccountWeb3Full(Nethereum.Web3.Accounts.Account account) => new Web3(account, WorkenSDKUnity.Url);
+
         public async Task GetNetworkStatus()
         {
             throw new NotImplementedException("GetNetworkStatus method is not implemented.");
@@ -65,7 +69,6 @@ namespace worken_sdk_unity.Network
                     string responseData = await response.Content.ReadAsStringAsync();
                     
                     BlockInformation info = JsonConvert.DeserializeObject<BlockInformation>(responseData);
-                    //Do robic do modelu result
                     return info;
                 }
                 else
@@ -128,7 +131,6 @@ namespace worken_sdk_unity.Network
                     string responseData = await response.Content.ReadAsStringAsync();
 
                     BlockInformation info = JsonConvert.DeserializeObject<BlockInformation>(responseData);
-                    //Do robic do modelu result
                     return info;
                 }
                 else
