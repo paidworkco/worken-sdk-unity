@@ -9,6 +9,10 @@ namespace worken_sdk_unity.Network
         internal static Web3 GetAccountWeb3(Nethereum.Web3.Accounts.Account account) => new Web3(account);
         internal static Web3 GetAccountWeb3Full(Nethereum.Web3.Accounts.Account account) => new Web3(account, WorkenSDKUnity.Url);
 
+        /// <summary>
+        /// Zwraca numer ostatniego bloku w sieci
+        /// </summary>
+        /// <returns></returns>
         public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GetLatestBlock()
         {
            var BlockNumber = await WorkenSDKUnity.Web3Client.Eth.Blocks.GetBlockNumber.SendRequestAsync();
@@ -16,6 +20,10 @@ namespace worken_sdk_unity.Network
             return BlockNumber;
         }
 
+        /// <summary>
+        /// Zwraca hasRate sieci
+        /// </summary>
+        /// <returns></returns>
         public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GetHashRate()
         {
             var HashRate = await WorkenSDKUnity.Web3Client.Eth.Mining.Hashrate.SendRequestAsync();
@@ -23,16 +31,15 @@ namespace worken_sdk_unity.Network
             return HashRate;
         }
 
+        /// <summary>
+        /// Zwraca cene Gas
+        /// </summary>
+        /// <returns></returns>
         public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GasPrice()
         {
             var GasPrice = await WorkenSDKUnity.Web3Client.Eth.GasPrice.SendRequestAsync();
 
             return GasPrice;
-        }
-
-        public async Task GetMonitorNetworkCongestion()
-        {
-            throw new NotImplementedException("GetMonitorNetworkCongestion method is not implemented.");
         }
 
         /// <summary>
@@ -99,7 +106,8 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// 
+        /// https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-erc-20-token-transfer-events-by-address
+        /// Zwraca liste ERC-20 tokenów przekazywanych za pomoca adresu
         /// </summary>
         /// <param name="blockHex">Podawana wartość bloku musi być jako hex</param>
         /// <param name="apiKeyToken"></param>

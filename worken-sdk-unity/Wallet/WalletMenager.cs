@@ -23,6 +23,7 @@ namespace worken_sdk_unity.WalletMenager
         }
 
         /// <summary>
+        /// https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-internal-transactions-by-address
         /// Metoda pozyskuje do 10000 rekordów histori danego portfela pod adresem 'address' używając klucza 'apiKey'
         /// </summary>
         /// <param name="address">Adres portfela</param>

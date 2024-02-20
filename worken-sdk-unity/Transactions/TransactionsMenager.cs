@@ -10,7 +10,7 @@ namespace worken_sdk_unity.Transactions
     public static class TransactionsManager
     {
         /// <summary>
-        /// 
+        /// za pomocą tej metody można wysłać transakcje z konta 'account' do kogo 'to' oraz określając wartość 'amount' 
         /// </summary>
         /// <param name="account"></param>
         /// <param name="To"></param>
@@ -34,11 +34,22 @@ namespace worken_sdk_unity.Transactions
             return receipt.TransactionHash;
         }
 
+        /// <summary>
+        /// not implemented
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public async static Task ReceiveTransaction()
         {
             throw new NotImplementedException("ReceiveTransaction method is not implemented.");
         }
 
+        /// <summary>
+        /// Zwraca status zamówienia wyszukując po 'TransactionHash'
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="TransactionHash"></param>
+        /// <returns></returns>
         public async static Task<HexBigInteger> GetTransactionStatus(this Account account, string TransactionHash)
         {
             var Web3Client = NetworkManager.GetAccountWeb3Full(account);
@@ -48,6 +59,12 @@ namespace worken_sdk_unity.Transactions
             return receipt.Status;
         }
 
+        /// <summary>
+        /// Zwraca wszystkie transakcje dla konkretnego numeru bloku
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="blockNumber"></param>
+        /// <returns></returns>
         public async static Task<IObservable<Transaction>> GetRecentTransactions(this Account account, ulong blockNumber)
         {
             var Web3Client = NetworkManager.GetAccountWeb3Full(account);

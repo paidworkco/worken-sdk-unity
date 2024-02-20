@@ -6,6 +6,11 @@ namespace worken_sdk_unity.AccountMenager
 {
     public sealed class AccountManager
     {
+        /// <summary>
+        /// Zwraca balans który jest jako ether w postaci WEI
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public async Task<BigInteger> GetBalanceInEtherWei(string address)
         {
             var result = await WorkenSDKUnity.Web3Client.Eth.GetBalance.SendRequestAsync(address);
@@ -13,6 +18,11 @@ namespace worken_sdk_unity.AccountMenager
             return result.Value;
         }
 
+        /// <summary>
+        /// Zwraca balans który jest jako ether
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public async Task<decimal> GetBalanceInEther(string address)
         {
             var result = await WorkenSDKUnity.Web3Client.Eth.GetBalance.SendRequestAsync(address);
@@ -20,6 +30,11 @@ namespace worken_sdk_unity.AccountMenager
             return Web3.Convert.FromWei(result.Value);
         }
 
+        /// <summary>
+        /// Zwraca balans w Workenach jako WEI
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public async Task<BigInteger> GetBalanceInWorkenWei(string address)
         {
             //możliwe do wyniesienia
@@ -31,6 +46,11 @@ namespace worken_sdk_unity.AccountMenager
             return balance;
         }
 
+        /// <summary>
+        /// Zwraca balans jako Workeny
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public async Task<decimal> GetBalanceInWorken(string address)
         {
             //możliwe do wyniesienia
@@ -41,6 +61,11 @@ namespace worken_sdk_unity.AccountMenager
             return Web3.Convert.FromWei(balance);
         }
 
+        /// <summary>
+        /// Zwraca balans w Workenach lecz w postaci hexa
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public async Task<string> GetBalanceInWorkenHex(string address)
         {
             //możliwe do wyniesienia
@@ -52,6 +77,11 @@ namespace worken_sdk_unity.AccountMenager
             return new Nethereum.Hex.HexTypes.HexBigInteger(balance).HexValue;
         }
 
+        /// <summary>
+        /// Tworzy obiekt konta na podstawie klucza prywatnego
+        /// </summary>
+        /// <param name="privateKey"></param>
+        /// <returns></returns>
         public Nethereum.Web3.Accounts.Account CreateAccount(string privateKey)
         {
             return new Nethereum.Web3.Accounts.Account(privateKey);
