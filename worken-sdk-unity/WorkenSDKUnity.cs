@@ -7,7 +7,7 @@ namespace worken_sdk_unity
     internal static class WorkenSDKUnity
     {
         /// <summary>
-        /// 
+        /// ABI
         /// </summary>
         public readonly static string Abi = @"[
             {

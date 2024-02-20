@@ -1,22 +1,9 @@
 ﻿using Nethereum.Hex.HexTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using worken_sdk_unity.Network;
-using Account = Nethereum.Web3.Accounts.Account;
-using Nethereum.Web3;
-using Nethereum.ABI.FunctionEncoding.Attributes;
-using Nethereum.Contracts.CQS;
-using Nethereum.Util;
-using Nethereum.Web3.Accounts;
-using Nethereum.Hex.HexConvertors.Extensions;
-using Nethereum.Contracts;
-using Nethereum.Contracts.Extensions;
-using System.Numerics;
-using worken_sdk_unity.Transactions.model;
 using Nethereum.RPC.Eth.DTOs;
+using Nethereum.RPC.Reactive.Polling;
+using worken_sdk_unity.Network;
+using worken_sdk_unity.Transactions.model;
+using Account = Nethereum.Web3.Accounts.Account;
 
 namespace worken_sdk_unity.Transactions
 {
@@ -52,19 +39,22 @@ namespace worken_sdk_unity.Transactions
             throw new NotImplementedException("ReceiveTransaction method is not implemented.");
         }
 
-        public async static Task GetTransactionStatus()
+        public async static Task<HexBigInteger> GetTransactionStatus(this Account account, string TransactionHash)
         {
-            
+            var Web3Client = NetworkManager.GetAccountWeb3Full(account);
+
+            var receipt = await Web3Client.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(TransactionHash);
+
+            return receipt.Status;
         }
 
-        public async static Task GetRecentTransactions()
+        public async static Task<IObservable<Transaction>> GetRecentTransactions(this Account account, ulong blockNumber)
         {
-            throw new NotImplementedException("GetRecentTransactions method is not implemented.");
-        }
+            var Web3Client = NetworkManager.GetAccountWeb3Full(account);
 
-        public async static Task GetEstimatedGas()
-        {
-           
+            var transactions = Web3Client.Eth.GetTransactions(new BlockParameter(blockNumber), new BlockParameter(blockNumber));
+
+            return transactions;
         }
     }
 }

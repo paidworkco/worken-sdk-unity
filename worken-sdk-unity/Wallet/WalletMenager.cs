@@ -1,14 +1,7 @@
 ﻿using NBitcoin;
 using Nethereum.Hex.HexTypes;
-using Nethereum.Web3;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using worken_sdk_unity.Network;
-using worken_sdk_unity.Network.models;
 using worken_sdk_unity.Wallet.model;
 using WalletETH = Nethereum.HdWallet.Wallet;
 
