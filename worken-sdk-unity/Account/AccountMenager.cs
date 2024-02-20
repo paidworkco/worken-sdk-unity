@@ -5,13 +5,28 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace worken_sdk_unity.Account
 {
-    public sealed class Account
+    public sealed class AccountMenager
     {
 
-        public async Task<BigInteger> GetBalanceWei(string address)
+        public async Task<BigInteger> GetBalanceInEtherWei(string address)
+        {
+            var result = await WorkenSDKUnity.Web3Client.Eth.GetBalance.SendRequestAsync(address);
+
+            return result.Value;
+        }
+
+        public async Task<decimal> GetBalanceInEther(string address)
+        {
+            var result = await WorkenSDKUnity.Web3Client.Eth.GetBalance.SendRequestAsync(address);
+
+            return Web3.Convert.FromWei(result.Value);
+        }
+
+        public async Task<BigInteger> GetBalanceInWorkenWei(string address)
         {
             //możliwe do wyniesienia
             var contract = WorkenSDKUnity.Web3Client.Eth.GetContract(WorkenSDKUnity.Abi, WorkenSDKUnity.ContractAddress);
@@ -22,7 +37,7 @@ namespace worken_sdk_unity.Account
             return balance;
         }
 
-        public async Task<decimal> GetBalance(string address)
+        public async Task<decimal> GetBalanceInWorken(string address)
         {
             //możliwe do wyniesienia
             var contract = WorkenSDKUnity.Web3Client.Eth.GetContract(WorkenSDKUnity.Abi, WorkenSDKUnity.ContractAddress);
