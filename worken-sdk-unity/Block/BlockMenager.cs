@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace worken_sdk_unity.Block
 {
-    public sealed class BlockMenager
+    public sealed class BlockManager
     {
         
     }
