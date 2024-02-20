@@ -1,11 +1,6 @@
-﻿using Nethereum.Web3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+﻿using System.Numerics;
+
+using Web3 = Nethereum.Web3.Web3;
 
 namespace worken_sdk_unity.Account
 {
@@ -44,8 +39,18 @@ namespace worken_sdk_unity.Account
             var function = contract.GetFunction("balanceOf");
 
             BigInteger balance = await function.CallAsync<BigInteger>(address);
-
             return Web3.Convert.FromWei(balance);
+        }
+
+        public async Task<string> GetBalanceInWorkenHex(string address)
+        {
+            //możliwe do wyniesienia
+            var contract = WorkenSDKUnity.Web3Client.Eth.GetContract(WorkenSDKUnity.Abi, WorkenSDKUnity.ContractAddress);
+            var function = contract.GetFunction("balanceOf");
+
+            BigInteger balance = await function.CallAsync<BigInteger>(address);
+
+            return balance.ToString("x");
         }
     }
 }
