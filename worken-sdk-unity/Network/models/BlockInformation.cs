@@ -12,6 +12,6 @@ namespace worken_sdk_unity.Network.models
 
         public string message { get; set; }
 
-        //public string result { get; set; }
+        public TransactionResult[] result { get; set; }
     }
 }
