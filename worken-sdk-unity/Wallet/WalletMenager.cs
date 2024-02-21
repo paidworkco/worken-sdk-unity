@@ -5,7 +5,7 @@ using worken_sdk_unity.Network;
 using worken_sdk_unity.Wallet.model;
 using WalletETH = Nethereum.HdWallet.Wallet;
 
-namespace worken_sdk_unity.WalletMenager
+namespace worken_sdk_unity.Wallet
 {
     public sealed class WalletManager
     {

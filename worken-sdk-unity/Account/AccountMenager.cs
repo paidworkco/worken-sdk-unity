@@ -2,7 +2,7 @@
 
 using Web3 = Nethereum.Web3.Web3;
 
-namespace worken_sdk_unity.AccountMenager
+namespace worken_sdk_unity.Account
 {
     public sealed class AccountManager
     {
