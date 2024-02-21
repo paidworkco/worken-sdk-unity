@@ -8,6 +8,7 @@ namespace worken_sdk_unity.AccountMenager
     {
         /// <summary>
         /// Zwraca balans który jest jako ether w postaci WEI
+        /// Returns the balance in ether in WEI format
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
@@ -20,6 +21,7 @@ namespace worken_sdk_unity.AccountMenager
 
         /// <summary>
         /// Zwraca balans który jest jako ether
+        /// Returns the balance in ether
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
@@ -32,6 +34,7 @@ namespace worken_sdk_unity.AccountMenager
 
         /// <summary>
         /// Zwraca balans w Workenach jako WEI
+        /// Returns the balance in Worken in WEI format
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
@@ -48,6 +51,7 @@ namespace worken_sdk_unity.AccountMenager
 
         /// <summary>
         /// Zwraca balans jako Workeny
+        /// Returns the balance in Worken
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
@@ -63,6 +67,7 @@ namespace worken_sdk_unity.AccountMenager
 
         /// <summary>
         /// Zwraca balans w Workenach lecz w postaci hexa
+        /// Returns the balance in Worken in hexadecimal format
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
@@ -79,6 +84,7 @@ namespace worken_sdk_unity.AccountMenager
 
         /// <summary>
         /// Tworzy obiekt konta na podstawie klucza prywatnego
+        /// Creates an account object based on a private key
         /// </summary>
         /// <param name="privateKey"></param>
         /// <returns></returns>

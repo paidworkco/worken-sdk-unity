@@ -10,12 +10,12 @@ namespace worken_sdk_unity.Transactions
     public static class TransactionsManager
     {
         /// <summary>
-        /// za pomocą tej metody można wysłać transakcje z konta 'account' do kogo 'to' oraz określając wartość 'amount' 
+        /// Za pomocą tej metody można wysłać transakcję z konta 'account' do odbiorcy 'To' oraz określić wartość 'amount'. 
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="To"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
+        /// <param name="account">Konto, z którego ma być wysłana transakcja.</param>
+        /// <param name="To">Odbiorca transakcji.</param>
+        /// <param name="amount">Wartość transakcji.</param>
+        /// <returns>Hash transakcji.</returns>
         public async static Task<string> SendTransaction(this Account account, string To, HexBigInteger amount)
         {
             var Web3Client = NetworkManager.GetAccountWeb3Full(account);
@@ -35,21 +35,21 @@ namespace worken_sdk_unity.Transactions
         }
 
         /// <summary>
-        /// not implemented
+        /// Metoda niezaimplementowana.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         public async static Task ReceiveTransaction()
         {
-            throw new NotImplementedException("ReceiveTransaction method is not implemented.");
+            throw new NotImplementedException("Metoda ReceiveTransaction nie została zaimplementowana.");
         }
 
         /// <summary>
-        /// Zwraca status zamówienia wyszukując po 'TransactionHash'
+        /// Zwraca status transakcji o podanym 'TransactionHash'.
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="TransactionHash"></param>
-        /// <returns></returns>
+        /// <param name="account">Konto, dla którego ma być sprawdzony status transakcji.</param>
+        /// <param name="TransactionHash">Hash transakcji.</param>
+        /// <returns>Status transakcji.</returns>
         public async static Task<HexBigInteger> GetTransactionStatus(this Account account, string TransactionHash)
         {
             var Web3Client = NetworkManager.GetAccountWeb3Full(account);
@@ -60,11 +60,11 @@ namespace worken_sdk_unity.Transactions
         }
 
         /// <summary>
-        /// Zwraca wszystkie transakcje dla konkretnego numeru bloku
+        /// Zwraca wszystkie transakcje dla określonego numeru bloku.
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="blockNumber"></param>
-        /// <returns></returns>
+        /// <param name="account">Konto, dla którego mają być zwrócone transakcje.</param>
+        /// <param name="blockNumber">Numer bloku.</param>
+        /// <returns>Strumień transakcji.</returns>
         public async static Task<IObservable<Transaction>> GetRecentTransactions(this Account account, ulong blockNumber)
         {
             var Web3Client = NetworkManager.GetAccountWeb3Full(account);
@@ -74,4 +74,5 @@ namespace worken_sdk_unity.Transactions
             return transactions;
         }
     }
+
 }

@@ -6,22 +6,33 @@ namespace worken_sdk_unity.Network
 {
     public sealed class NetworkManager
     {
+        /// <summary>
+        /// Zwraca obiekt Web3 związany z kontem.
+        /// Returns a Web3 object associated with the account.
+        /// </summary>
         internal static Web3 GetAccountWeb3(Nethereum.Web3.Accounts.Account account) => new Web3(account);
+
+        /// <summary>
+        /// Zwraca pełny obiekt Web3 związany z kontem.
+        /// Returns a full Web3 object associated with the account.
+        /// </summary>
         internal static Web3 GetAccountWeb3Full(Nethereum.Web3.Accounts.Account account) => new Web3(account, WorkenSDKUnity.Url);
 
         /// <summary>
-        /// Zwraca numer ostatniego bloku w sieci
+        /// Zwraca numer ostatniego bloku w sieci.
+        /// Returns the number of the latest block in the network.
         /// </summary>
         /// <returns></returns>
         public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GetLatestBlock()
         {
-           var BlockNumber = await WorkenSDKUnity.Web3Client.Eth.Blocks.GetBlockNumber.SendRequestAsync();
+            var BlockNumber = await WorkenSDKUnity.Web3Client.Eth.Blocks.GetBlockNumber.SendRequestAsync();
 
             return BlockNumber;
         }
 
         /// <summary>
-        /// Zwraca hasRate sieci
+        /// Zwraca hashrate sieci.
+        /// Returns the network hash rate.
         /// </summary>
         /// <returns></returns>
         public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GetHashRate()
@@ -32,7 +43,8 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// Zwraca cene Gas
+        /// Zwraca cenę Gas.
+        /// Returns the Gas price.
         /// </summary>
         /// <returns></returns>
         public async Task<Nethereum.Hex.HexTypes.HexBigInteger> GasPrice()
@@ -43,10 +55,10 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-erc-20-token-transfer-events-by-address
-        /// metode musze jeszcze przetestować bo narazie zwraca status 0 czyli brak znalezionych transakcji 
+        /// Metoda zwraca informacje o bloku.
+        /// Method retrieves block information.
         /// </summary>
-        /// <param name="blockNumber">podawana wartość bloku jest jako liczba</param>
+        /// <param name="blockNumber">Numer bloku.</param>
         /// <param name="apiKeyToken"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
@@ -65,7 +77,7 @@ namespace worken_sdk_unity.Network
 #if DEBUG
             var uriBuilder = new UriBuilder(WorkenSDKUnity.TestPolygonScanBaseUrlApi);
 #else
-            var uriBuilder = new UriBuilder(WorkenSDKUnity.PolygonScanBaseUrlApi);
+        var uriBuilder = new UriBuilder(WorkenSDKUnity.PolygonScanBaseUrlApi);
 #endif
             var queryParams = System.Web.HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["module"] = "account";
@@ -75,7 +87,7 @@ namespace worken_sdk_unity.Network
             queryParams["endblock"] = blockNumber.ToString();
             queryParams["sort"] = "asc";
             queryParams["apikey"] = apiKeyToken;
-            
+
             uriBuilder.Query = queryParams.ToString();
 
             try
@@ -85,7 +97,7 @@ namespace worken_sdk_unity.Network
                 if (response.IsSuccessStatusCode)
                 {
                     string responseData = await response.Content.ReadAsStringAsync();
-                    
+
                     BlockInformation info = JsonConvert.DeserializeObject<BlockInformation>(responseData);
                     return info;
                 }
@@ -106,10 +118,10 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-erc-20-token-transfer-events-by-address
-        /// Zwraca liste ERC-20 tokenów przekazywanych za pomoca adresu
+        /// Metoda zwraca informacje o bloku.
+        /// Method retrieves block information.
         /// </summary>
-        /// <param name="blockHex">Podawana wartość bloku musi być jako hex</param>
+        /// <param name="blockHex">Numer bloku w formacie szesnastkowym.</param>
         /// <param name="apiKeyToken"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
@@ -128,7 +140,7 @@ namespace worken_sdk_unity.Network
 #if DEBUG
             var uriBuilder = new UriBuilder(WorkenSDKUnity.TestPolygonScanBaseUrlApi);
 #else
-            var uriBuilder = new UriBuilder(WorkenSDKUnity.PolygonScanBaseUrlApi);
+        var uriBuilder = new UriBuilder(WorkenSDKUnity.PolygonScanBaseUrlApi);
 #endif
             var queryParams = System.Web.HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["module"] = "account";
@@ -168,4 +180,5 @@ namespace worken_sdk_unity.Network
             }
         }
     }
+
 }

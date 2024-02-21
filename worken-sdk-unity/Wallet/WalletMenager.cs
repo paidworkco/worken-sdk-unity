@@ -10,9 +10,10 @@ namespace worken_sdk_unity.WalletMenager
     public sealed class WalletManager
     {
         /// <summary>
-        /// Metoda jest odpowiedzialna za stworzenie obiektu Portfela potrzebnego do dalszych działań
+        /// Metoda jest odpowiedzialna za stworzenie obiektu Portfela potrzebnego do dalszych działań.
+        /// This method is responsible for creating a Wallet object required for further operations.
         /// </summary>
-        /// <returns>Zwracany jest obiekt portfela</returns>
+        /// <returns>Zwracany jest obiekt portfela.</returns>
         public async Task<WalletETH> CreateWallet()
         {
             Mnemonic mnemo = new Mnemonic(Wordlist.English, WordCount.Twelve);
@@ -23,8 +24,9 @@ namespace worken_sdk_unity.WalletMenager
         }
 
         /// <summary>
-        /// https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-internal-transactions-by-address
-        /// Metoda pozyskuje do 10000 rekordów histori danego portfela pod adresem 'address' używając klucza 'apiKey'
+        /// Metoda pozyskuje do 10000 rekordów historii danego portfela pod adresem 'address' używając klucza 'apiKey'
+        /// Method retrieves up to 10000 records of wallet history under the address 'address' using the key 'apiKey'
+        /// More details: https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-internal-transactions-by-address
         /// </summary>
         /// <param name="address">Adres portfela</param>
         /// <param name="apiKey">Klucz uzytkownika</param>
@@ -98,6 +100,7 @@ namespace worken_sdk_unity.WalletMenager
     {
         /// <summary>
         /// zwraca Nonce
+        /// Returns the nonce
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
