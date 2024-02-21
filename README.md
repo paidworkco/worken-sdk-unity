@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/paidworkco/worken-sdk-php">
+  <a href="https://github.com/paidworkco/worken-sdk-unity">
     <img alt="GitHub Repository Stars Count" src="https://img.shields.io/github/stars/paidworkco/worken-sdk-php?style=social" />
   </a>
     <a href="https://x.com/paidworkco">
@@ -24,8 +24,8 @@
     <a href="http://commitizen.github.io/cz-cli/">
         <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" />
     </a>
-    <a href="https://github.com/paidworkco/worken-sdk-php">
-        <img alt="License" src="https://img.shields.io/github/license/paidworkco/worken-sdk-php" />
+    <a href="https://github.com/paidworkco/worken-sdk-unity">
+        <img alt="License" src="https://img.shields.io/github/license/paidworkco/worken-sdk-unity" />
     </a>
     <a href="https://github.com/paidworkco/worken-sdk-php/pulls">
         <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
@@ -180,9 +180,8 @@ using worken_sdk_unity.Transactions;
 using worken_sdk_unity.Account;
 
 var account = accountManager.CreateAccount(address);
-
 ```
-### Methods
+### ExtensionsMethods
 #### SendTransaction
 ```csharp
 account.SendTransaction(to,amount)
@@ -266,4 +265,3 @@ account.GetNextAccountNonce()
 #### Description
 zwraca Nonce
 Returns the nonce
-
