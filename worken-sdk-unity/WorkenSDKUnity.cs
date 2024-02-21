@@ -1,6 +1,4 @@
-﻿using Nethereum.RPC.Web3;
-using Nethereum.Web3;
-using System;
+﻿using Nethereum.Web3;
 
 namespace worken_sdk_unity
 {
