@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/paidworkco/worken-sdk-unity">
-    <img alt="GitHub Repository Stars Count" src="https://img.shields.io/github/stars/paidworkco/worken-sdk-php?style=social" />
+    <img alt="GitHub Repository Stars Count" src="https://img.shields.io/github/stars/paidworkco/worken-sdk-unity?style=social" />
   </a>
     <a href="https://x.com/paidworkco">
         <img alt="Follow Us on X" src="https://img.shields.io/twitter/follow/paidworkco?style=social" />
@@ -27,7 +27,7 @@
     <a href="https://github.com/paidworkco/worken-sdk-unity">
         <img alt="License" src="https://img.shields.io/github/license/paidworkco/worken-sdk-unity" />
     </a>
-    <a href="https://github.com/paidworkco/worken-sdk-php/pulls">
+    <a href="https://github.com/paidworkco/worken-sdk-unity/pulls">
         <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
     </a>
 </p>
@@ -94,7 +94,6 @@ Zwraca balans jako Workeny
 Returns the balance in Worken
 
 
-
 #### GetBalanceInWorkenHex
 ```csharp
 account.GetBalanceInWorkenHex(address);
@@ -106,6 +105,19 @@ account.GetBalanceInWorkenHex(address);
 #### Description
 Zwraca balans w Workenach lecz w postaci hexa
 Returns the balance in Worken in hexadecimal format
+
+
+#### GetBalanceInWorkenHex
+```csharp
+account.GetBalanceInEtherHex(address);
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `address` | `string` | **Required**. Your wallet address |
+
+#### Description
+Zwraca balans w Ether lecz w postaci hexa
+Returns the balance in Ether in hexadecimal format
 
 
 #### CreateAccount
@@ -180,8 +192,13 @@ using worken_sdk_unity.Transactions;
 using worken_sdk_unity.Account;
 
 var account = accountManager.CreateAccount(address);
+//or
+var walletManager = new WalletManager();
+var wallet = wallet.CreateWallet();
+var account = wallet.GetAccount(0);
+//get account from created wallet object by index
 ```
-### ExtensionsMethods
+### Methods
 #### SendTransaction
 ```csharp
 account.SendTransaction(to,amount)
@@ -265,3 +282,20 @@ account.GetNextAccountNonce()
 #### Description
 zwraca Nonce
 Returns the nonce
+
+
+## Contract object usage
+#### Initialization
+```csharp
+using worken_sdk_unity.Contract;
+
+var contract = new ContractManager();
+```
+
+### Methods
+#### GetContractStatus
+```csharp
+contract.GetContractStatus()
+```
+#### Description
+Returnes true if contract is active
