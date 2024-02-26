@@ -40,7 +40,7 @@ namespace worken_sdk_unity.Account
         /// <returns></returns>
         public async Task<BigInteger> GetBalanceInWorkenWei(string address)
         {
-            //możliwe do wyniesienia
+            //do przeniesienia do Contract
             var contract = WorkenSDKUnity.Web3Client.Eth.GetContract(WorkenSDKUnity.Abi, WorkenSDKUnity.ContractAddress);
             var function = contract.GetFunction("balanceOf");
 
@@ -57,7 +57,7 @@ namespace worken_sdk_unity.Account
         /// <returns></returns>
         public async Task<decimal> GetBalanceInWorken(string address)
         {
-            //możliwe do wyniesienia
+            //do przeniesienia do Contract
             var contract = WorkenSDKUnity.Web3Client.Eth.GetContract(WorkenSDKUnity.Abi, WorkenSDKUnity.ContractAddress);
             var function = contract.GetFunction("balanceOf");
 
@@ -80,6 +80,19 @@ namespace worken_sdk_unity.Account
             BigInteger balance = await function.CallAsync<BigInteger>(address);
 
             return new Nethereum.Hex.HexTypes.HexBigInteger(balance).HexValue;
+        }
+
+        /// <summary>
+        /// Zwraca balans w Ether lecz w postaci hexa
+        /// Returns the balance in Ether in hexadecimal format
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public async Task<string> GetBalanceInEtherHex(string address)
+        {
+            var result = await WorkenSDKUnity.Web3Client.Eth.GetBalance.SendRequestAsync(address);
+
+            return result.HexValue;
         }
 
         /// <summary>
