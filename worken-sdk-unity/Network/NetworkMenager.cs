@@ -7,19 +7,16 @@ namespace worken_sdk_unity.Network
     public sealed class NetworkManager
     {
         /// <summary>
-        /// Zwraca obiekt Web3 związany z kontem.
         /// Returns a Web3 object associated with the account.
         /// </summary>
         internal static Web3 GetAccountWeb3(Nethereum.Web3.Accounts.Account account) => new Web3(account);
 
         /// <summary>
-        /// Zwraca pełny obiekt Web3 związany z kontem.
         /// Returns a full Web3 object associated with the account.
         /// </summary>
         internal static Web3 GetAccountWeb3Full(Nethereum.Web3.Accounts.Account account) => new Web3(account, WorkenSDKUnity.Url);
 
         /// <summary>
-        /// Zwraca numer ostatniego bloku w sieci.
         /// Returns the number of the latest block in the network.
         /// </summary>
         /// <returns></returns>
@@ -31,7 +28,6 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// Zwraca hashrate sieci.
         /// Returns the network hash rate.
         /// </summary>
         /// <returns></returns>
@@ -43,7 +39,6 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// Zwraca cenę Gas.
         /// Returns the Gas price.
         /// </summary>
         /// <returns></returns>
@@ -55,7 +50,6 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// Metoda zwraca informacje o bloku.
         /// Method retrieves block information.
         /// </summary>
         /// <param name="blockNumber">Numer bloku.</param>
@@ -118,7 +112,6 @@ namespace worken_sdk_unity.Network
         }
 
         /// <summary>
-        /// Metoda zwraca informacje o bloku.
         /// Method retrieves block information.
         /// </summary>
         /// <param name="blockHex">Numer bloku w formacie szesnastkowym.</param>
@@ -180,5 +173,4 @@ namespace worken_sdk_unity.Network
             }
         }
     }
-
 }

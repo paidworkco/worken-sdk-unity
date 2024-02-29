@@ -10,7 +10,6 @@ namespace worken_sdk_unity.Wallet
     public sealed class WalletManager
     {
         /// <summary>
-        /// Metoda jest odpowiedzialna za stworzenie obiektu Portfela potrzebnego do dalszych działań.
         /// This method is responsible for creating a Wallet object required for further operations.
         /// </summary>
         /// <returns>Zwracany jest obiekt portfela.</returns>
@@ -24,7 +23,6 @@ namespace worken_sdk_unity.Wallet
         }
 
         /// <summary>
-        /// Metoda pozyskuje do 10000 rekordów historii danego portfela pod adresem 'address' używając klucza 'apiKey'
         /// Method retrieves up to 10000 records of wallet history under the address 'address' using the key 'apiKey'
         /// More details: https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-internal-transactions-by-address
         /// </summary>
@@ -99,7 +97,6 @@ namespace worken_sdk_unity.Wallet
     public static class WalletMenagerExtensions
     {
         /// <summary>
-        /// zwraca Nonce
         /// Returns the nonce
         /// </summary>
         /// <param name="account"></param>
