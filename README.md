@@ -237,10 +237,23 @@ var walletManager = new WalletManager();
 ### Methods
 #### CreateWallet
 ```csharp
-walletManager.CreateWallet(to,amount)
+walletManager.CreateWallet()
 ```
 #### Description
-This method is responsible for creating a Wallet object required for further operations.
+This method is responsible for creating a Wallet object required for further operations.with default 12 words and as default language English
+
+```csharp
+walletManager.CreateWallet(wordCount)
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `wordCount` | `NBitcoin.WordCount` | **Required**. wordCount |
+| `wordlist` | `NBitcoin.Wordlist` | **Required**. wordlist |
+
+
+#### Description
+This method is responsible for creating a Wallet object required for further operations.based on provided enum and provided language 
 
 
 #### GetWalletHistory
