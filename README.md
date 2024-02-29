@@ -51,7 +51,6 @@ account.GetBalanceInEtherWei(address);
 | `address` | `string` | **Required**. Your wallet address |
 
 #### Description
-Zwraca balans który jest jako ether w postaci WEI
 Returns the balance in ether in WEI format
 
 
@@ -64,7 +63,6 @@ account.GetBalanceInEther(address);
 | `address` | `string` | **Required**. Your wallet address |
 
 #### Description
-Zwraca balans który jest jako ether
 Returns the balance in ether
 
 
@@ -77,7 +75,6 @@ account.GetBalanceInWorkenWei(address);
 | `address` | `string` | **Required**. Your wallet address |
 
 #### Description
-Zwraca balans w Workenach jako WEI
 Returns the balance in Worken in WEI format
 
 
@@ -90,7 +87,6 @@ account.GetBalanceInWorken(address);
 | `address` | `string` | **Required**. Your wallet address |
 
 #### Description
-Zwraca balans jako Workeny
 Returns the balance in Worken
 
 
@@ -103,7 +99,6 @@ account.GetBalanceInWorkenHex(address);
 | `address` | `string` | **Required**. Your wallet address |
 
 #### Description
-Zwraca balans w Workenach lecz w postaci hexa
 Returns the balance in Worken in hexadecimal format
 
 
@@ -116,7 +111,6 @@ account.GetBalanceInEtherHex(address);
 | `address` | `string` | **Required**. Your wallet address |
 
 #### Description
-Zwraca balans w Ether lecz w postaci hexa
 Returns the balance in Ether in hexadecimal format
 
 
@@ -129,7 +123,6 @@ account.CreateAccount(address);
 | `privateKey` | `string` | **Required**. your private key |
 
 #### Description
-Tworzy obiekt konta na podstawie klucza prywatnego
 Creates an account object based on a private key
 ## Network object usage
 #### Initialization
@@ -144,7 +137,6 @@ network.GetLatestBlock();
 ```
 
 #### Description
-Zwraca numer ostatniego bloku w sieci.
 Returns the number of the latest block in the network.
 
 
@@ -154,7 +146,6 @@ network.GetHashRate();
 ```
 
 #### Description
-Zwraca hashrate sieci.
 Returns the network hash rate.
 
 
@@ -164,7 +155,6 @@ network.GasPrice();
 ```
 
 #### Description
-Zwraca cenę Gas.
 Returns the Gas price.
 
 
@@ -183,7 +173,6 @@ network.getBlockInformation(blockNumber,apiKeyToken);
 | `apiKeyToken` | `string` | **Required**. apiKeyToken |
 
 #### Description
-Metoda zwraca informacje o bloku.
 Method retrieves block information.
 ## Transactions object usage
 #### Initialization
@@ -210,7 +199,6 @@ account.SendTransaction(to,amount)
 
 
 #### Description
-Za pomocą tej metody można wysłać transakcję z konta 'account' do odbiorcy 'To' oraz określić wartość 'amount'. 
 This method allows sending a transaction from the 'account' to the recipient 'To' specifying the value 'amount'.
 
 
@@ -224,7 +212,6 @@ account.GetTransactionStatus(transactionHash)
 
 
 #### Description
-Zwraca status transakcji o podanym 'TransactionHash'.
 Returns the status of the transaction with the specified 'TransactionHash'.
 
 
@@ -238,7 +225,6 @@ account.GetRecentTransactions(blockNumber)
 
 
 #### Description
-Zwraca wszystkie transakcje dla określonego numeru bloku.
 Returns all transactions for the specified block number.
 ## Wallet object usage
 #### Initialization
@@ -251,11 +237,23 @@ var walletManager = new WalletManager();
 ### Methods
 #### CreateWallet
 ```csharp
-walletManager.CreateWallet(to,amount)
+walletManager.CreateWallet()
 ```
 #### Description
-Metoda jest odpowiedzialna za stworzenie obiektu Portfela potrzebnego do dalszych działań.
-This method is responsible for creating a Wallet object required for further operations.
+This method is responsible for creating a Wallet object required for further operations.with default 12 words and as default language English
+
+```csharp
+walletManager.CreateWallet(wordCount)
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `wordCount` | `NBitcoin.WordCount` | **Required**. wordCount |
+| `wordlist` | `NBitcoin.Wordlist` | **Required**. wordlist |
+
+
+#### Description
+This method is responsible for creating a Wallet object required for further operations.based on provided enum and provided language 
 
 
 #### GetWalletHistory
@@ -269,7 +267,6 @@ walletManager.GetWalletHistory(address,apiKey)
 
 
 #### Description
-Metoda pozyskuje do 10000 rekordów historii danego portfela pod adresem 'address' używając klucza 'apiKey'
 Method retrieves up to 10000 records of wallet history under the address 'address' using the key 'apiKey'
 More Details: https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-internal-transactions-by-address
 
@@ -280,7 +277,6 @@ More Details: https://docs.polygonscan.com/api-endpoints/accounts#get-a-list-of-
 account.GetNextAccountNonce()
 ```
 #### Description
-zwraca Nonce
 Returns the nonce
 
 

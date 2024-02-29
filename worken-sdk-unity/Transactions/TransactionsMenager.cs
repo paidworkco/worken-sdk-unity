@@ -10,7 +10,6 @@ namespace worken_sdk_unity.Transactions
     public static class TransactionsManager
     {
         /// <summary>
-        /// Za pomocą tej metody można wysłać transakcję z konta 'account' do odbiorcy 'To' oraz określić wartość 'amount'. 
         /// This method allows sending a transaction from the 'account' to the recipient 'To' specifying the value 'amount'.
         /// </summary>
         /// <param name="account">Konto, z którego ma być wysłana transakcja.</param>
@@ -36,7 +35,6 @@ namespace worken_sdk_unity.Transactions
         }
 
         /// <summary>
-        /// Metoda niezaimplementowana.
         /// Method not implemented.
         /// </summary>
         /// <returns></returns>
@@ -47,7 +45,6 @@ namespace worken_sdk_unity.Transactions
         }
 
         /// <summary>
-        /// Zwraca status transakcji o podanym 'TransactionHash'.
         /// Returns the status of the transaction with the specified 'TransactionHash'.
         /// </summary>
         /// <param name="account">Konto, dla którego ma być sprawdzony status transakcji.</param>
@@ -63,7 +60,6 @@ namespace worken_sdk_unity.Transactions
         }
 
         /// <summary>
-        /// Zwraca wszystkie transakcje dla określonego numeru bloku.
         /// Returns all transactions for the specified block number.
         /// </summary>
         /// <param name="account">Konto, dla którego mają być zwrócone transakcje.</param>
