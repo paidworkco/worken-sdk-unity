@@ -6,7 +6,7 @@
   Send & Receive secure Blockchain transactions with Worken
 </h3>
 <p align="center">
-  🚀 Over 15M+ Users using <a href="https://www.paidwork.com/worken?utm_source=github.com&utm_medium=referral&utm_campaign=readme" target="_blank">Worken</a> Token
+  🚀 Over 15M+ Users using <a href="https://www.paidwork.com/worken?utm_source=github.com&utm_medium=referral&utm_campaign=readme" target="_blank">Worken</a>
 </p>
 
 <p align="center">
